@@ -1,31 +1,34 @@
-var express = require('express');
-var app = express();
-var fs = require('fs');
-var parse = require('csv-parse');
-var http = require('http');
+const fs = require('fs');
+const createCsvParser = require('csv-parse');
+const http = require('http');
 
-var inputFile='myapp.csv';
-var MyData = []; 
+const inputFile='myapp.csv';
+const myData = []; 
 
-var parser = parse({delimiter: ','}, function (err, data) {
-    data.forEach(function(line) {
-      var Travel_Details = { "Period" : line[0]
-                    , "Passenger_type" : line[1]
-                    , "Direction" : line[2]
-                    , "Country" : line[3]
-                    , "Count" : line[4]
-                    };
-     console.log(JSON.stringify(Travel_Details));
-     MyData.push("Period:",Travel_Details.Period, "Passenger_type:",Travel_Details.Passenger_type, "Direction:",Travel_Details.Direction,"Country:", Travel_Details.Country, "Count:",Travel_Details.Count);
-      
-    });       
+
+const csvParserOptions = {delimiter: ','};
+
+const extractLineData = function(line){
+  const travelDetails = { "Period" : line[0]
+                  , "Passenger_type" : line[1]
+                  , "Direction" : line[2]
+                  , "Country" : line[3]
+                  , "Count" : line[4]
+                  };
+    console.log(JSON.stringify(travelDetails));
+    myData.push("Period:",travelDetails.Period, "Passenger_type:",travelDetails.Passenger_type, "Direction:",travelDetails.Direction,"Country:", travelDetails.Country, "Count:",travelDetails.Count);
+};
+
+const csvParser = createCsvParser(csvParserOptions, function (err, data) {
+  data.forEach(function(line) {
+    extractLineData(line);
+  });       
 });
-fs.createReadStream(inputFile).pipe(parser);
+fs.createReadStream(inputFile).pipe(csvParser);
 
-
-var server = http.createServer(function (req, resp) {
+const server = http.createServer(function (req, resp) {
   resp.writeHead(200, { 'content-type': 'application/json' });
-  resp.end(JSON.stringify(MyData));
+  resp.end(JSON.stringify(myData));
 });
 server.listen(8080);
 
