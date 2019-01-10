@@ -1,14 +1,22 @@
+// 1. Import libraries
+console.log("1. Import libraries");
+
+const http = require('http');
 const fs = require('fs');
 const createCsvParser = require('csv-parse');
-const http = require('http');
+
+// 2. defining some variables
+console.log("2. defining some variables");
 
 const inputFile='myapp.csv';
 const myData = []; 
 
-
 const csvParserOptions = {delimiter: ','};
 
+// 3. defining the function
 const extractLineData = function(line){
+  console.log("extractLineData");
+
   const travelDetails = { "Period" : line[0]
                   , "Passenger_type" : line[1]
                   , "Direction" : line[2]
@@ -19,18 +27,36 @@ const extractLineData = function(line){
     myData.push("Period:",travelDetails.Period, "Passenger_type:",travelDetails.Passenger_type, "Direction:",travelDetails.Direction,"Country:", travelDetails.Country, "Count:",travelDetails.Count);
 };
 
+// 4. Creating csvParser - did u open the file for doing this? File has not been opened yet
+console.log("4. Creating csvParser - did u open the file for doing this? File has not been opened yet");
 const csvParser = createCsvParser(csvParserOptions, function (err, data) {
   data.forEach(function(line) {
     extractLineData(line);
-  });       
+  });
 });
-fs.createReadStream(inputFile).pipe(csvParser);
 
-const server = http.createServer(function (req, resp) {
+console.log("5. Create ReadStream for the input file and pipe it with csvParser");
+const strm = fs.createReadStream(inputFile).pipe(csvParser);
+
+console.log("// 6. Create HTTP Request handler");
+const requestHandler = function (req, resp) {
+  // When there is a HTTP Request - this will get executed
+  console.log("When there is a HTTP Request - this will get executed");
   resp.writeHead(200, { 'content-type': 'application/json' });
   resp.end(JSON.stringify(myData));
-});
+  strm.destroy();
+};
+
+// 7. Create HTTP Server
+console.log("7. Create HTTP Server");
+const server = http.createServer(requestHandler);
+
+// 8. Server to listen at specified port
 server.listen(8080);
+
+
+
+
 
 // """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 // var csv = require('csv');
