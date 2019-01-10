@@ -1,6 +1,6 @@
 Express App
 
-1. mkdir myapp
+1 mkdir myapp
 cd myapp
 
 2.npm init
