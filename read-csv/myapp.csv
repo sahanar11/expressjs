@@ -1,0 +1,39 @@
+"Period","Passenger_type","Direction","Country","Count"
+201511,"Overseas visitor","Arrival","Andorra",16
+201511,"Overseas visitor","Arrival","Argentina",416
+201511,"Overseas visitor","Arrival","Australia",110048
+201511,"Overseas visitor","Arrival","Austria",960
+201511,"Overseas visitor","Arrival","Bahrain",32
+201511,"Overseas visitor","Arrival","Bangladesh",32
+201511,"Overseas visitor","Arrival","Barbados",16
+201511,"Overseas visitor","Arrival","Belarus",16
+201511,"Overseas visitor","Arrival","Belgium",848
+201511,"Overseas visitor","Arrival","Bermuda",16
+201511,"Overseas visitor","Arrival","Brazil",1120
+201511,"Overseas visitor","Arrival","Brunei Darussalam",64
+201606,"Overseas visitor","Departure","Japan",4862
+201606,"Overseas visitor","Departure","Kazakhstan",26
+201606,"Overseas visitor","Departure","Kenya",26
+201606,"Overseas visitor","Departure","Kiribati",130
+201606,"Overseas visitor","Departure","Korea, Republic of",3744
+201606,"Overseas visitor","Departure","Kuwait",52
+201606,"Overseas visitor","Departure","Laos",52
+201706,"Overseas visitor","Departure","Venezuela",8
+201706,"Overseas visitor","Departure","Viet Nam",568
+201706,"Overseas visitor","Departure","Wallis and Futuna",11
+201706,"Overseas visitor","Departure","Yemen",1
+201706,"Overseas visitor","Departure","Zambia",2
+201706,"Overseas visitor","Departure","Zimbabwe",15
+201707,"Overseas visitor","Arrival","Afghanistan",16
+201707,"Overseas visitor","Arrival","Angola",16
+201707,"Overseas visitor","Arrival","Argentina",1392
+201707,"Overseas visitor","Arrival","Australia",118432
+201810,"NZ resident","Departure","Qatar",100
+201810,"NZ resident","Departure","Romania",20
+201810,"NZ resident","Departure","Russia",160
+201810,"NZ resident","Departure","Samoa",6180
+201810,"NZ resident","Departure","Samoa, American",60
+201810,"NZ resident","Departure","Saudi Arabia",20
+201810,"NZ resident","Departure","Serbia",40
+201810,"NZ resident","Departure","Seychelles",20
+201810,"NZ resident","Departure","Singapore",2240
